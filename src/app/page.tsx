@@ -1,11 +1,9 @@
 import Main from "@/components/layouts/Main";
 
-const Home: React.FC = () => {
+export default function Home() {
   return (
     <>
       <Main />
     </>
   );
 }
-
-export default Home
