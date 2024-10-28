@@ -20,7 +20,7 @@ const Login = () => {
     if (login && typeof login !== "boolean") {
       const token = login.access_token;
       localStorage.setItem("token", token);
-      toast.success("Login successful");
+      toast.success("Login realizado com sucesso");
       setTimeout(() => {
         window.location.href = "/";
       }, 2000);
@@ -47,7 +47,9 @@ const Login = () => {
       <h1 className="text-4xl font-bold text-center mb-6 text-gray-700">
         Login
       </h1>
-      <p className="text-gray-600 text-center mb-6 font-bold">Welcome Back!</p>
+      <p className="text-gray-600 text-center mb-6 font-bold">
+        Bem-vindo de volta!
+      </p>
 
       <form
         onSubmit={handleSubmit}
@@ -70,7 +72,7 @@ const Login = () => {
           <div className="relative flex flex-row align-middle items-center justify-center">
             <Input
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
+              placeholder="Senha"
               key="password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
@@ -78,12 +80,9 @@ const Login = () => {
             />
             <Button
               onClick={togglePassword}
-              buttonStyle="text-gray-600 p-1 m-0 ml-1"
-            >
-              <span className="material-icons m-0 p-0">
-                {showPassword ? "visibility" : "visibility_off"}
-              </span>
-            </Button>
+              buttonStyle="text-gray-600 p-1 m-0 ml-1 w-auto bg-gray-200 rounded-md"
+              placeholder={showPassword ? "Esconder" : "Mostrar"}
+            />
           </div>
         </div>
 
@@ -91,18 +90,18 @@ const Login = () => {
           type="submit"
           disabled={loading}
           buttonStyle="w-full py-3 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-blue-300"
-          placeholder="Login"
+          placeholder="Entrar"
         >
-          {loading ? <span>Loading...</span> : "Login"}
+          {loading ? <span>Carregando...</span> : "Entrar"}
         </Button>
 
         <div className="mt-4 text-center">
-          Don&apos;t have an account?
+          Não tem uma conta?
           <a
             href="/signup"
             className="text-blue-500 hover:underline cursor-pointer font-bold"
           >
-            Register here
+            Registre-se aqui
           </a>
         </div>
       </form>

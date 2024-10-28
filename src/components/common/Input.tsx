@@ -18,7 +18,7 @@ const Input: React.FC<InputProps> = ({
   isReadOnly,
 }) => {
   return (
-    <div className="flex-col">
+    <div className="flex-col w-full">
       {isReadOnly && (
         <label className="text-sm text-gray-500" htmlFor={name}>
           {placeholder}

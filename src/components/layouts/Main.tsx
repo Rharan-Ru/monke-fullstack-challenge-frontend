@@ -19,6 +19,7 @@ import {
 } from "@/hooks/address.hook";
 import Modal from "../common/Modal";
 import { validateClientFields } from "@/utils/clientFieldsValidation";
+import { logoutHook } from "@/hooks/login.hook";
 
 const Main: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
@@ -128,6 +129,13 @@ const Main: React.FC = () => {
       } as TypeAddressMarkers,
       ...prevData,
     ]);
+    setAddressTotalWeight((prevState) => {
+      return prevState + Number(clientData?.address?.weight || 0);
+    });
+    setAddressPagination((prevData) => ({
+      ...prevData,
+      totalCount: prevData.totalCount + 1,
+    }));
     resetClientData();
     setIsLoading((prevData) => ({
       ...prevData,
@@ -163,6 +171,10 @@ const Main: React.FC = () => {
         totalCount: response.totalCount,
       }));
       setAddressTotalWeight(response.totalWeight);
+      setIsLoading((prevData) => ({
+        ...prevData,
+        address: false,
+      }));
     },
     [addressPagination.page]
   );
@@ -250,6 +262,11 @@ const Main: React.FC = () => {
           placeholder="Resetar Cadastro"
           buttonStyle="bg-red-600 text-white hover:bg-red-700"
           onClick={handleOpenConfirmationModal}
+        />
+        <Button
+          placeholder="Sair"
+          buttonStyle="bg-yellow-300 text-black hover:bg-yellow-400"
+          onClick={logoutHook}
         />
       </div>
 

@@ -32,7 +32,7 @@ const AddressInput: React.FC<AddressInputProps> = ({
     const component = place?.address_components?.find((comp) =>
       comp.types.some((type) => types.includes(type))
     );
-    return component ? component.long_name : "";
+    return component ? component.long_name : "n/a";
   };
 
   const onPlaceChanged = useCallback(() => {

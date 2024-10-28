@@ -20,7 +20,7 @@ const Register = () => {
     if (register && typeof register !== "boolean") {
       const token = register.token;
       localStorage.setItem("token", token);
-      toast.success("Registration successful");
+      toast.success("Registro realizado com sucesso");
       setTimeout(() => {
         window.location.href = "/";
       }, 2000);
@@ -42,9 +42,11 @@ const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 flex-col">
       <h1 className="text-4xl font-bold text-center mb-6 text-gray-700">
-        Register
+        Registrar
       </h1>
-      <p className="text-gray-600 text-center mb-6 font-bold">Welcome Back!</p>
+      <p className="text-gray-600 text-center mb-6 font-bold">
+        Bem-vindo de volta!
+      </p>
 
       <form
         onSubmit={handleSubmit}
@@ -67,7 +69,7 @@ const Register = () => {
           <div className="relative flex flex-row align-middle items-center justify-center">
             <Input
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
+              placeholder="Senha"
               key="password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
@@ -75,12 +77,9 @@ const Register = () => {
             />
             <Button
               onClick={togglePassword}
-              buttonStyle="text-gray-600 p-1 m-0 ml-1"
-            >
-              <span className="material-icons m-0 p-0">
-                {showPassword ? "visibility" : "visibility_off"}
-              </span>
-            </Button>
+              buttonStyle="text-gray-600 p-1 m-0 ml-1 w-auto bg-gray-200 rounded-md"
+              placeholder={showPassword ? "Esconder" : "Mostrar"}
+            />
           </div>
         </div>
 
@@ -88,18 +87,18 @@ const Register = () => {
           type="submit"
           disabled={loading}
           buttonStyle="w-full py-3 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-blue-300"
-          placeholder="Register"
+          placeholder="Registrar"
         >
-          {loading ? <span>Loading...</span> : "Register"}
+          {loading ? <span>Carregando...</span> : "Registrar"}
         </Button>
 
         <div className="mt-4 text-center">
-          Have an account?
+          Já tem uma conta?
           <a
             href="/signin"
             className="text-blue-500 hover:underline cursor-pointer font-bold"
           >
-            Login here
+            Faça login aqui
           </a>
         </div>
       </form>

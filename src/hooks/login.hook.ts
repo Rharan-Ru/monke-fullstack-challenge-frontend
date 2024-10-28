@@ -39,3 +39,8 @@ export const registerHook = async ({
     return errorHook(error);
   }
 };
+
+export const logoutHook = async (): Promise<void> => {
+  localStorage.removeItem("token");
+  window.location.href = "/signin";
+}

@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }: AuthContextProps) => {
         error.response.status === 401 &&
         window.location.pathname !== "/signin"
       ) {
-        toast.error("Session expired, please login again");
+        toast.error("Sessão expirada, redirecionando para a página de login");
         setTimeout(() => {
           setIsAuth(false);
           localStorage.removeItem("token");
