@@ -77,7 +77,7 @@ const Register = () => {
             />
             <Button
               onClick={togglePassword}
-              buttonStyle="text-gray-600 p-1 m-0 ml-1 w-auto bg-gray-200 rounded-md"
+              buttonStyle="text-gray-600 p-1 m-0 ml-1 w-fit bg-gray-200 rounded-md"
               placeholder={showPassword ? "Esconder" : "Mostrar"}
             />
           </div>
@@ -85,7 +85,7 @@ const Register = () => {
 
         <Button
           type="submit"
-          disabled={loading}
+          disabled={loading || !email || !password}
           buttonStyle="w-full py-3 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-blue-300"
           placeholder="Registrar"
         >
@@ -93,7 +93,7 @@ const Register = () => {
         </Button>
 
         <div className="mt-4 text-center">
-          Já tem uma conta?
+          Já tem uma conta?{" "}
           <a
             href="/signin"
             className="text-blue-500 hover:underline cursor-pointer font-bold"

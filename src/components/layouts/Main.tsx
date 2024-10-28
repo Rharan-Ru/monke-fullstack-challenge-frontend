@@ -64,24 +64,26 @@ const Main: React.FC = () => {
 
   const handleClientData = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
     if (name === "weight") {
       const validatedWeight =
-        value.length <= 10 && !isNaN(Number(value)) && Number(value) > 0
+        value.length <= 10 && /^[0-9]+$/.test(value) && Number(value) > 0
           ? value
-          : "";
+          : clientData?.address?.weight || "";
+
       setClientData((prevData) => ({
         ...prevData,
         address: {
           ...prevData.address,
-          weight: validatedWeight,
+          weight: value === "" ? "" : validatedWeight,
         },
       }));
-      return;
+    } else {
+      setClientData({
+        ...clientData,
+        [name]: value,
+      });
     }
-    setClientData({
-      ...clientData,
-      [name]: value,
-    });
   };
 
   const handleAddress = (addressData: TypeAddress) => {
