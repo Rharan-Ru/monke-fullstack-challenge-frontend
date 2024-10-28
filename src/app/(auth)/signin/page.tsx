@@ -17,7 +17,7 @@ const Login = () => {
     setLoading(true);
 
     const login = await loginHook({ email, password });
-    if (login) {
+    if (login && typeof login !== "boolean") {
       const token = login.access_token;
       localStorage.setItem("token", token);
       toast.success("Login successful");

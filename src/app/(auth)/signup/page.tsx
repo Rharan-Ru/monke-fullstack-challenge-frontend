@@ -17,7 +17,7 @@ const Register = () => {
     setLoading(true);
 
     const register = await registerHook({ email, password });
-    if (register) {
+    if (register && typeof register !== "boolean") {
       const token = register.token;
       localStorage.setItem("token", token);
       toast.success("Registration successful");

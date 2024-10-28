@@ -7,7 +7,12 @@ export const loginHook = async ({
 }: {
   email: string;
   password: string;
-}): Promise<any> => {
+}): Promise<
+  | {
+      access_token: string;
+    }
+  | boolean
+> => {
   try {
     const response = await instance.post("auth/login", { email, password });
     return response.data;
@@ -22,7 +27,11 @@ export const registerHook = async ({
 }: {
   email: string;
   password: string;
-}): Promise<any> => {
+}): Promise<
+  | {
+    token: string;
+    }
+  | boolean> => {
   try {
     const response = await instance.post("user", { email, password });
     return response.data;
